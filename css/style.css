@@ -16,6 +16,7 @@
 body {
   font-family: var(--main-ff);
 }
+
 .active {
   font-weight: bold;
   text-decoration: none;
@@ -24,21 +25,30 @@ img {
   max-width: 100%;
 }
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   filter: drop-shadow(0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.5));
   border-radius: 20px;
-  transition: all .5s;
+  transition: all 0.5s;
+  animation-name: entrance;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s;
 }
 .icon:hover {
   border-radius: 0;
   filter: invert(1);
-
 }
 .wrapper {
   width: 80%;
   margin: auto;
+  opacity: 0;
+  animation-name: entrance;
+  animation-duration: 1200ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 /* -------------------------------------------------------nav */
 
@@ -54,10 +64,10 @@ nav {
   font-weight: 700;
   font-style: italic;
   font-size: 2rem;
-  transition: .5s;
+  transition: 0.5s;
 }
 .nav-span:hover {
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   cursor: none;
 }
 
@@ -72,7 +82,6 @@ nav {
   cursor: pointer;
   text-decoration: none;
   color: black;
-
 }
 .nav-ul li a:hover {
   border-bottom: 2px solid rgb(0, 0, 0);
@@ -96,7 +105,12 @@ section {
   padding: 1rem;
   line-height: 1;
   align-self: flex-start;
-
+  animation-name: entrance;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
 }
 .section__main p {
   margin: 1rem 0;
@@ -119,21 +133,32 @@ section {
   border-radius: 1.5em;
   color: white;
   margin-right: 1rem;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .buttons-container__contact:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .section-vulcain {
-  max-width:32.5rem ;
-
-
+  max-width: 32.5rem;
+  animation-name: entrance;
+  animation-duration: 300ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
 }
 .section-vulcain img {
   max-width: 100%;
   border-radius: 1.25rem;
-
 }
-  
+
+@keyframes entrance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
