@@ -76,24 +76,45 @@ nav {
   list-style: none;
   gap: 0.8rem;
 }
-.nav-ul li {
-}
+
 .nav-ul li a {
   cursor: pointer;
   text-decoration: none;
   color: black;
+  position: relative;
+  display: inline-block;
 }
-.nav-ul li a:hover {
-  border-bottom: 2px solid rgb(0, 0, 0);
+.nav-ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #343434cf;
+  transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform-origin: right center;
+  display: block;
+  opacity: 0;
+}
+nav ul li a:hover::before {
+  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left center;
+  opacity: 1;
+}
+nav ul li a:not(:hover)::before {
+  width: 0;
+  opacity: 0;
 }
 
 /* -------------------------------------------------------section */
 
 section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 .section__main {
   max-width: 32.5rem;
@@ -111,6 +132,8 @@ section {
   animation-fill-mode: forwards;
   animation-delay: 0.5s;
   opacity: 0;
+  align-self: center;
+
 }
 .section__main p {
   margin: 1rem 0;
@@ -153,6 +176,17 @@ section {
   max-width: 100%;
   border-radius: 1.25rem;
 }
+.blue {
+  /* width: 32.5rem; */
+  height: 544px;
+  background-color: blue;
+}
+
+.red {
+  /* width: 32.5rem; */
+  height: 32.5rem;
+  background-color: rgb(255, 0, 0);
+}
 
 @keyframes entrance {
   from {
@@ -160,5 +194,40 @@ section {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1em 1em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "section__main section-vulcain"
+      "blue section-vulcain"
+      "blue red"
+      ". red"
+      ". ."
+      ". .";
+  }
+  .section__main {
+    grid-area: section__main;
+    justify-self: end;
+    /* align-self: center; */
+    
+  }
+  .section-vulcain {
+    grid-area: section-vulcain;
+    justify-self: flex-start;
+    align-self: self-end;
+  }
+  .blue {
+    grid-area: blue;
+  }
+
+  .red {
+    grid-area: red;
   }
 }
