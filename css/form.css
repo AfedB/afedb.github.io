@@ -1,0 +1,153 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-ff: "Poppins", sans-serif;
+  --text-thin-100: 100;
+  --text-extralight-200: 200;
+  --text-regular-400: 400;
+  --text-bold-700: 700;
+  --text-bold-700-italic: italic;
+}
+body {
+  font-family: var(--main-ff);
+  line-height: 1.1;
+  user-select: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 1.5rem 0 3rem; */
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: white;
+  height: auto;
+  z-index: 100;
+  padding: 1rem;
+  transition: top 0.5s ease-in-out;
+}
+
+#navbar {
+  /* border-bottom: 1px solid #000000; */
+  /* box-shadow: 0rem 0rem 20px 0px #7474747a; */
+}
+
+.nav-span {
+  font-family: var(--main-ff);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 2rem;
+  transition: 0.5s;
+}
+.nav-span:hover {
+  letter-spacing: 0.1rem;
+  cursor: none;
+}
+
+.nav-ul {
+  display: flex;
+  list-style: none;
+  gap: 0.8rem;
+}
+
+.nav-ul li a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  position: relative;
+  display: inline-block;
+}
+.nav-ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #343434cf;
+  transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform-origin: right center;
+  display: block;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+nav ul li a:hover::before {
+  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left center;
+  opacity: 1;
+  animation: colorchange 5s infinite;
+}
+nav ul li a:not(:hover)::before {
+  width: 0;
+  opacity: 0;
+}
+
+@keyframes colorchange {
+  0% {
+    background-color: hsl(0, 100%, 50%);
+  }
+  50% {
+    background-color: hsl(180, 100%, 50%);
+  }
+  100% {
+    background-color: hsl(360, 100%, 50%);
+  }
+}
+/* -----------------------------------------------------form */
+/* Styles pour le formulaire */
+form.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 28rem;
+  margin: 3rem auto;
+}
+
+/* Styles pour les groupes de champs */
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Styles pour les libellés des champs */
+.form__label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Styles pour les champs de saisie */
+.form__input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Styles pour le bouton d'envoi */
+.form__button {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+/* Styles pour le survol du bouton d'envoi */
+.form__button:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+}
+
+/* -----------------------------------------------------/form */

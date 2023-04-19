@@ -25,7 +25,6 @@ body {
   flex-direction: column;
 }
 
-
 .active {
   font-weight: bold;
   text-decoration: none;
@@ -50,6 +49,15 @@ img {
 }
 .wrapper {
   width: 90%;
+  margin: auto;
+  opacity: 0;
+  animation-name: entrance;
+  animation-duration: 1200ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  padding: 0.5rem;
+}
+.wrapper_sections-blog {
   margin: auto;
   opacity: 0;
   animation-name: entrance;
@@ -298,14 +306,62 @@ section {
 }
 
 .section-blog-wrapper {
+  min-width: 50%;
   padding: 1rem;
   background-color: #ededed47;
+  border: 1px solid #c0c0c021;
 }
 .blue {
-  max-width: 35rem;
-  height: 100px;
-  background-color: blue;
+  min-width: 40%;
   order: 1;
+  padding: 0.3rem;
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #c0c0c070;
+  overflow: scroll;
+  height: 500px;
+}
+.blue h2 {
+  padding: 1rem;
+}
+.blue2 {
+  display: flex;
+  justify-content: center;
+}
+.blue2 img {
+  transition: all 0.4s ease;
+  align-self: baseline;
+}
+.blue2 img:hover {
+  transform: scale(.99);
+  filter: grayscale(100%);
+}
+
+.ul-rss {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+.li-rss {
+  list-style: none;
+  padding: 0.5rem;
+}
+.li-rss p {
+  padding: 0.5rem;
+  color: black;
+  font-size: 16px;
+}
+.date-publi {
+  font-size: 14px;
+  color: #68686880;
+  padding: 0.2rem;
+}
+.li-rss p:nth-of-type(2) {
+  display: none;
+}
+.li-rss strong {
+  color: black;
+  padding: 0.5rem;
+  display: block;
 }
 @media screen and (min-width: 600px) {
   .articles-wrapper img {
@@ -340,22 +396,36 @@ section {
     align-self: self-end;
   }
 
-
   .section-blog-wrapper {
     order: 2;
   }
+.wrapper_sections-blog {
+  width: 90%;
+}
   .blue {
-    min-width: 50%;
+    max-width: 20rem;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    order: 1;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+  }
+  .blue2 {
+    min-width: 33%;
     max-width: 35rem;
     height: 100vh;
-    background-color: blue;
-    order: 1;
-    color: white;
+    background-color: rgb(255 255 255);
+    order: 3;
+    color: black;
     font-size: 2rem;
-}
-.row {
-  flex-direction: row;
-}
+    text-align: center;
+  }
+  .row {
+    flex-direction: row;
+  }
+  .justifyCenter {
+    justify-content: center;
+  }
   .red {
     grid-area: red;
   }

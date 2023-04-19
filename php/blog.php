@@ -31,36 +31,54 @@ $page = 'blog';
 </head>
 
 <body>
-  <?php
-  include '../php/components/header.php';
-  ?>
-  <div class="wrapper flex column row">
 
-    <div class="section-blog-wrapper">
+  <div class="wrapper">
+    <?php
+    include '../php/components/header.php';
+    ?>
+    <div class="wrapper_sections-blog flex column row justifyCenter">
 
-      <h1 class="Blog-titre">Le blog</h1>
-      <h2 class="Blog-titre">Découvrez quelques articles sur le développement web et les nouvelles technologies</h2>
-      <div class="articles-wrapper">
+      <div class="section-blog-wrapper">
+        <h1 class="Blog-titre">Le blog</h1>
+        <h2 class="Blog-titre">Découvrez quelques articles sur le développement web et les nouvelles technologies</h2>
+        <div class="articles-wrapper">
+          <?php
+          include("./components/articles-stock.php");
+          ?>
+          <?php
+          foreach ($articles as $article) {
+          ?>
+            <li class="accordion-header"><?php echo $article["title"]; ?></li>
+            <div class="accordion-content">
+              <p><?php echo $article["content"]; ?></p>
+            </div>
+          <?php
+          }
+          ?>
+        </div>
+      </div>
+      <div class="blue">
+        <?php
 
-        <?php
-        include("./components/articles-stock.php");
-        ?>
-        <?php
-        foreach ($articles as $article) {
-        ?>
-          <li class="accordion-header"><?php echo $article["title"]; ?></li>
-          <div class="accordion-content">
-            <p><?php echo $article["content"]; ?></p>
-          </div>
-        <?php
+        $rss = simplexml_load_file('http://frenchweb.fr/feed'); // Charge le flux RSS
+        echo "<h2>Derniers articles de Frenchweb :</h2>";
+        echo "<ul class='ul-rss'>";
+        foreach ($rss->channel->item as $item) { // Boucle à travers chaque élément du flux RSS
+          $title = $item->title;
+          $link = $item->link;
+          $description = $item->description;
+          $pubDate = date('j F Y à H:i', strtotime($item->pubDate)); // Formate la date de publication
+          echo "<li class='li-rss'><a href='$link' target='_blank'><strong>$title</strong></a> <div  class ='date-publi'>(publié le $pubDate)<br>$description</div></li>";
         }
+        echo "</ul>";
+
+
         ?>
       </div>
+      <div class="blue2">
+        <img src="../imgs/gif/webdev_section.gif" alt="">
+      </div>
     </div>
-    <div class="blue">
-      <h1>LE BLOG</h1>
-    </div>
-
 
   </div>
 
